@@ -1,4 +1,4 @@
-name: Deploy sitio estático
+name: 🚀 Deploy Producción
 
 on:
   push:
@@ -6,25 +6,26 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repositorio
-      uses: actions/checkout@v3
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
 
-    - name: Instalar dependencias
-      run: npm install
+      - name: Instalar dependencias
+        run: npm install
 
-    - name: Construir sitio
-      run: npm run build
+      - name: Compilar proyecto
+        run: npm run build
 
-    - name: Copiar archivos al servidor
-      uses: appleboy/scp-action@v0.1.4
-      with:
-        host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        source: "dist/*"
-        target: ${{ secrets.SSH_TARGET_PATH }}
-        strip_components: 1
+      - name: Subir al servidor
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          source: "dist/*"
+          target: ${{ secrets.SSH_TARGET }}
+          strip_components: 1
