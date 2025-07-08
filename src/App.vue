@@ -72,7 +72,7 @@
       <!-- SECCIÓN: Web Completa -->
       <section class="w-full max-w-md space-y-3 mb-8">
         <h2 class="text-lg text-orange-300 font-bold mb-2">🌐 Links Interés</h2>
-        <LinkButton emoji="🌐" label="Ir a la web completa" url="https://lonkodev.cl" />
+        <LinkButton emoji="🌐" label="Ir a la web completa" url="https://web.lonkodev.cl" />
       </section>
     </div>
 
